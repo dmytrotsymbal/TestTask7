@@ -1,8 +1,8 @@
 import { useState } from "react";
-// import ItemsListItem from "./ItemsListItem";
-import './ItemsBlock.scss'
+import ItemsListItem from "./ItemsListItem";
+import "../../../styles/ItemsBlock.scss";
 
-const ItemsBlock = ({ items, setItems, setSelectedItemId }) => {
+const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
   const [text, setText] = useState("");
 
   const addNew = () => {
@@ -39,17 +39,13 @@ const ItemsBlock = ({ items, setItems, setSelectedItemId }) => {
       </label>
       <ul className="itemsList">
         {items.map((item) => (
-          <li
-            className="itemsListItem"
+          <ItemsListItem
             key={item.id}
-            onClick={() => setSelectedItemId(item.id)}
-          >
-            <h4>{item.text}</h4>
-            <div className="right">
-              <span className="commentsQuantity">{item.comments.length}</span>
-              <button onClick={() => deleteItem(item.id)}>Delete</button>
-            </div>
-          </li>
+            item={item}
+            deleteItem={deleteItem}
+            setSelectedItemId={setSelectedItemId}
+            selectedItemId={selectedItemId}
+          />
         ))}
       </ul>
     </div>

@@ -1,16 +1,26 @@
 import { useState } from "react";
-import './CommentsBlock.scss'
+import CommentItem from "./СommentsListItem";
+import "../../../styles/CommentsBlock.scss";
 
 const CommentsBlock = ({ selectedItemId, items, setItems }) => {
   const [commentText, setCommentText] = useState("");
+  const [color, setColor] = useState("#000000");
 
   const addComment = () => {
     if (commentText.trim().length && selectedItemId !== null) {
-      const updatedItems = items.map((item) =>
-        item.id === selectedItemId
-          ? { ...item, comments: [...item.comments, commentText] }
-          : item
-      );
+      const updatedItems = items.map((item) => {
+        if (item.id === selectedItemId) {
+          const newComment = {
+            text: commentText,
+            color: color,
+          };
+          return {
+            ...item,
+            comments: [...item.comments, newComment],
+          };
+        }
+        return item;
+      });
       setItems(updatedItems);
       setCommentText("");
     }
@@ -25,17 +35,20 @@ const CommentsBlock = ({ selectedItemId, items, setItems }) => {
           {items
             .find((item) => item.id === selectedItemId)
             ?.comments.map((comment, index) => (
-              <li className="commentsListItem" key={index}>
-                <div className="colorSquere"></div>
-                <h4>{comment}</h4>
-              </li>
+              <CommentItem key={index} comment={comment} />
             ))}
         </ul>
       )}
 
       <label>
+        <input
+          className="colorInput"
+          type="color"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+        />
         <textarea
-        placeholder="Type comment here..."
+          placeholder="Type comment here..."
           type="text"
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}

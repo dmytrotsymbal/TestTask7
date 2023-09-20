@@ -17,6 +17,7 @@ const App = () => {
           items={items}
           setItems={setItems}
           setSelectedItemId={setSelectedItemId}
+          selectedItemId={selectedItemId}
         />
 
         <CommentsBlock

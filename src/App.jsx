@@ -12,6 +12,7 @@ const App = () => {
         {
           id: new Date().toISOString(),
           text: text,
+          comments: [],
         },
       ]);
       setText("");
@@ -21,6 +22,21 @@ const App = () => {
   const deleteItem = (itemId) => {
     const updatedItems = items.filter((item) => item.id !== itemId);
     setItems(updatedItems);
+  };
+
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [commentText, setCommentText] = useState("");
+
+  const addComment = () => {
+    if (commentText.trim().length && selectedItemId !== null) {
+      const updatedItems = items.map((item) =>
+        item.id === selectedItemId
+          ? { ...item, comments: [...item.comments, commentText] }
+          : item
+      );
+      setItems(updatedItems);
+      setCommentText("");
+    }
   };
 
   return (
@@ -42,12 +58,15 @@ const App = () => {
             />
             <button onClick={addNew}>Add new</button>
           </label>
-
           <ul className="itemsList">
             {items.map((item) => (
-              <li className="itemsListItem" key={item.id}>
+              <li
+                className="itemsListItem"
+                key={item.id}
+                onClick={() => setSelectedItemId(item.id)}
+              >
                 <h4>{item.text}</h4>
-                <span className="commentsQuantity">3</span>
+                <span className="commentsQuantity">{item.comments.length}</span>
                 <button onClick={() => deleteItem(item.id)}>Delete</button>
               </li>
             ))}
@@ -56,23 +75,26 @@ const App = () => {
 
         <div className="comments">
           <h2>Comments</h2>
-
           <label>
-            <input type="text" />
-            <button>Add new</button>
+            <input
+              type="text"
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+            />
+            <button onClick={addComment}>Add new</button>
           </label>
-
-          <ul className="commentsList">
-            <li className="commentsListItem">
-              <div className="colorSquere"></div>
-              <h4>comment 1</h4>
-            </li>
-
-            <li className="commentsListItem">
-              <div className="colorSquere"></div>
-              <h4>comment 2</h4>
-            </li>
-          </ul>
+          {selectedItemId !== null && (
+            <ul className="commentsList">
+              {items
+                .find((item) => item.id === selectedItemId)
+                ?.comments.map((comment, index) => (
+                  <li className="commentsListItem" key={index}>
+                    <div className="colorSquere"></div>
+                    <h4>{comment}</h4>
+                  </li>
+                ))}
+            </ul>
+          )}
         </div>
       </section>
     </div>

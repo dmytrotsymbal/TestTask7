@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './CommentsBlock.scss'
 
 const CommentsBlock = ({ selectedItemId, items, setItems }) => {
   const [commentText, setCommentText] = useState("");
@@ -18,14 +19,7 @@ const CommentsBlock = ({ selectedItemId, items, setItems }) => {
   return (
     <div className="comments">
       <h2>Comments</h2>
-      <label>
-        <input
-          type="text"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-        />
-        <button onClick={addComment}>Add new</button>
-      </label>
+
       {selectedItemId !== null && (
         <ul className="commentsList">
           {items
@@ -38,6 +32,16 @@ const CommentsBlock = ({ selectedItemId, items, setItems }) => {
             ))}
         </ul>
       )}
+
+      <label>
+        <textarea
+        placeholder="Type comment here..."
+          type="text"
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+        />
+        <button onClick={addComment}>Add new</button>
+      </label>
     </div>
   );
 };

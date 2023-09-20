@@ -1,0 +1,121 @@
+.items {
+  margin-top: 30px;
+  width: 500px;
+  min-height: 300px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+
+  h2 {
+    font-size: 2.5rem;
+    text-align: left;
+    font-weight: normal;
+    color: gray;
+  }
+
+  label {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    input {
+      display: block;
+      width: 75%;
+      height: 38px;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+      &:focus {
+        outline-color: rgb(101, 137, 233);
+      }
+    }
+
+    button {
+      color: #fff;
+      background-color: #17a2b8;
+      border: 0;
+      width: 91px;
+      height: 38px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 400;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #148799;
+      }
+    }
+  }
+
+  .itemsList {
+    margin-top: 20px;
+
+    .itemsListItem {
+      padding: 0px 10px;
+      border: 0.2px solid rgb(220, 219, 219);
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      h4 {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .right {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .commentsQuantity {
+          background-color: #17a2b8;
+          border-radius: 50px;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        button {
+          border: 1px solid red;
+          border-color: red;
+          color: red;
+          background-color: transparent;
+          width: 91px;
+          height: 38px;
+          padding: 6px 12px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.3s;
+          font-weight: 400;
+          font-size: 16px;
+
+          &:hover {
+            background-color: red;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

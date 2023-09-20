@@ -1,8 +1,8 @@
 import "../src/styles/App.scss";
 import ItemsBlock from "./components/ui/ItemsBlock/ItemsBlock";
 import CommentsBlock from "./components/ui/CommentsBlock/CommentsBlock";
-import { useState } from "react";
 import Sidebar from "./components/ui/Sidebar/Sidebar";
+import { useState } from "react";
 
 const App = () => {
   const [items, setItems] = useState([]);

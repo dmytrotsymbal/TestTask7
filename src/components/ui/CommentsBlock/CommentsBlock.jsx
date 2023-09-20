@@ -28,7 +28,7 @@ const CommentsBlock = ({ selectedItemId, items, setItems }) => {
 
   return (
     <div className="comments">
-      <h2>Comments</h2>
+      <h2>Comments <span>#{selectedItemId}</span></h2>
 
       {selectedItemId !== null && (
         <ul className="commentsList">

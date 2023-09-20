@@ -65,7 +65,12 @@ const App = () => {
           <ul className="commentsList">
             <li className="commentsListItem">
               <div className="colorSquere"></div>
-              <h4>bebeb</h4>
+              <h4>comment 1</h4>
+            </li>
+
+            <li className="commentsListItem">
+              <div className="colorSquere"></div>
+              <h4>comment 2</h4>
             </li>
           </ul>
         </div>

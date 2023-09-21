@@ -7,21 +7,24 @@ const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
 
   const addNew = () => {
     if (text.trim().length) {
-      setItems([
+      const newItems = [
         ...items,
         {
           id: new Date().toISOString(),
           text: text,
           comments: [],
         },
-      ]);
+      ];
+      setItems(newItems);
       setText("");
+      localStorage.setItem("items", JSON.stringify(newItems));
     }
   };
 
   const deleteItem = (itemId) => {
     const updatedItems = items.filter((item) => item.id !== itemId);
     setItems(updatedItems);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
   };
 
   return (

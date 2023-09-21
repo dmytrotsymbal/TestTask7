@@ -4,13 +4,18 @@ const ItemsListItem = ({
   setSelectedItemId,
   selectedItemId,
 }) => {
+  const onChangeSelectedItem = () => {
+    setSelectedItemId(item.id);
+    localStorage.setItem("selectedItemId", JSON.stringify(item.id));
+  };
+
   return (
     <li
       className={
         item.id === selectedItemId ? "itemsListItem_Selected" : "itemsListItem"
       }
       key={item.id}
-      onClick={() => setSelectedItemId(item.id)}
+      onClick={onChangeSelectedItem}
     >
       <h4>{item.text}</h4>
       <div className="right">

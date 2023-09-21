@@ -35,3 +35,108 @@
     width: 100%;
   }
 }
+
+@media (max-width: 1000px) {
+  .App {
+    .content {
+      flex-direction: column;
+      align-items: center;
+
+      .items {
+        min-height: 300px;
+      }
+
+      .comments {
+        min-height: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    .content {
+      flex-direction: column;
+      align-items: center;
+
+      .items {
+        width: 300px;
+
+        label {
+          button {
+            color: #fff;
+            background-color: #17a2b8;
+            width: 51px;
+            height: 38px;
+            font-size: 12px;
+          }
+        }
+
+        .itemsList {
+          margin-top: 20px;
+
+          .itemsListItem {
+            .right {
+              width: 30%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              button {
+                border: 1px solid red;
+                border-color: red;
+                color: red;
+                background-color: transparent;
+                width: 51px;
+                height: 38px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s;
+                font-weight: 400;
+                font-size: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                  background-color: red;
+                  color: white;
+                }
+              }
+            }
+          }
+
+          .itemsListItem_Selected {
+            .right {
+              button {
+                border: 1px solid red;
+                border-color: red;
+                color: red;
+                background-color: transparent;
+                width: 51px;
+                height: 38px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s;
+                font-weight: 400;
+                font-size: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                  background-color: red;
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .comments {
+        width: 300px;
+      }
+    }
+  }
+}

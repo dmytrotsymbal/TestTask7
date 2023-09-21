@@ -23,6 +23,7 @@ const CommentsBlock = ({ selectedItemId, items, setItems }) => {
       });
       setItems(updatedItems);
       setCommentText("");
+      localStorage.setItem("items", JSON.stringify(updatedItems));
     }
   };
 

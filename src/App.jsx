@@ -2,11 +2,19 @@ import "../src/styles/App.scss";
 import ItemsBlock from "./components/ui/ItemsBlock/ItemsBlock";
 import CommentsBlock from "./components/ui/CommentsBlock/CommentsBlock";
 import Sidebar from "./components/ui/Sidebar/Sidebar";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
+
+  useLayoutEffect(() => {
+    const defaultItems = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [];
+    setItems(defaultItems);
+
+    const defaultSelectedItemId = localStorage.getItem("selectedItemId") ? JSON.parse(localStorage.getItem("selectedItemId")) : null;
+    setSelectedItemId(defaultSelectedItemId);
+  }, []);
 
   return (
     <div className="App">

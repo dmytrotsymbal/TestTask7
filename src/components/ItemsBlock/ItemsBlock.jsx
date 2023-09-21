@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ItemsListItem from "./ItemsListItem";
-import "../../../styles/ItemsBlock.scss";
+import "../../styles/ItemsBlock.scss";
 
 const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
   const [text, setText] = useState("");
@@ -18,6 +18,8 @@ const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
       setItems(newItems);
       setText("");
       localStorage.setItem("items", JSON.stringify(newItems));
+    } else {
+      alert("Please enter a text");
     }
   };
 
@@ -25,6 +27,12 @@ const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
     const updatedItems = items.filter((item) => item.id !== itemId);
     setItems(updatedItems);
     localStorage.setItem("items", JSON.stringify(updatedItems));
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      addNew();
+    }
   };
 
   return (
@@ -35,6 +43,8 @@ const ItemsBlock = ({ items, setItems, selectedItemId, setSelectedItemId }) => {
         <input
           type="text"
           value={text}
+          required
+          onKeyDown={handleKeyDown}
           onChange={(e) => setText(e.target.value)}
           placeholder="Type name here..."
         />

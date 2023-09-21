@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CommentItem from "./СommentsListItem";
-import "../../../styles/CommentsBlock.scss";
+import "../../styles/CommentsBlock.scss";
 
 const CommentsBlock = ({ selectedItemId, items, setItems }) => {
   const [commentText, setCommentText] = useState("");
